@@ -1,0 +1,10 @@
+app/vendor/
+app/core/logs/
+app/docs/
+
+.DS_Store
+composer.lock
+
+.scannerwork
+
+node_modules/

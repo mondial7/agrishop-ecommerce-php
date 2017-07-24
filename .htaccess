@@ -1,0 +1,21 @@
+RewriteEngine on
+
+# Add x-frame-option for all pages
+# See https://stackoverflow.com/questions/21458635/how-to-configure-symfony2-for-x-frame-options
+Header append x-frame-options "SAMEORIGIN"
+
+Header append X-XSS-Protection 1
+
+Options -Indexes
+
+# Redirect to HTTPS
+# Enable this once deployed
+#RewriteCond %{HTTPS} !on
+#RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [QSA,L,R=301]
+
+# Avoid redirect of static resources
+RewriteRule ^app/assets - [L]
+
+# Redirect all the traffic to the
+# Front Controller - /index.php
+RewriteRule ^ index.php [QSA,L]

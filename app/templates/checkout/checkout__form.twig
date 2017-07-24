@@ -1,0 +1,39 @@
+{% if success %}
+
+	<section id="notification-form" style="width:300px;background-color:#f9f9f9;margin:50px auto;padding:15px;">
+
+		<h3>Thanks for buying from Agrishop!</h3>
+		<br>
+		<h4>You transaction has been succesfully registrated. You will receive as soon as possible Your order</h4>
+		<p><a href="" class="button">Back to the home page</a></p>
+
+	</section>
+
+{% else %}
+
+	<form id="order-cart" action="checkout/" method="post">
+
+		{% if not success and error_message %}
+
+			<p>{{ error_message }}</p>
+
+		{% endif %}
+
+		<div>
+			<label>Shipping address</label>
+			<input type="text" maxlength="250" id="address" name="address" required=""/>
+		</div>
+<br>
+		<!-- extra div that I inserted in order to get the credit card number -->
+		<div>
+			<label>Insert your card's number</label>
+			<input type="number" name="credit_card_number" placeholder="digits only" required="" />
+		</div>
+
+		<p>You are about to buy {{ number_of_items }} for a total of € {{ total_price }}</p>
+
+		<input type="submit" value="Order" name="order" id="order" />
+
+	</form>
+
+{% endif %}

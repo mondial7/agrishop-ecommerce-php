@@ -1,0 +1,175 @@
+#options_wrapper {
+	padding-top: 100px;
+	background-color: rgba(200,200,200,0.7);
+}
+
+#options_wrapper div span {
+	width: 30px;
+	height: 80px;
+	line-height: 30px;
+	background-color: #333;
+	color: #fefefe;
+	padding: 5px;
+	cursor: pointer;
+}
+
+.full_box {
+	position: fixed;
+	top: 100px;
+	width: 500px;
+	left: calc(50% - 250px);
+	background-color: #000;
+	color: #fff;
+}
+
+#deleteProfile div {
+	display: none;
+}
+
+.confirmDeleteBox div {
+	position: fixed;
+	top: 70px;
+	background-color: #f9f9f9;
+	height: 100%;
+	width: 100%;
+	display: block !important;
+    z-index: 1;
+}
+
+select {
+    margin: 0 !important;
+}
+
+.address, #general_data > div {
+    padding: 10px 0;
+}
+
+#newAddress {
+    background-color: rgba(200,200,200,0.9);
+    cursor: pointer;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    display: inline-block;
+    padding: 5px !important;
+}
+
+#deleteProfile {
+    margin-top: 50px;
+}
+
+#deleteProfile > span {
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    background-color: #f00 !important;
+}
+
+#deleteProfile div span {
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    margin: 0px 5px;
+}
+
+/* ----------------------------- */
+
+input {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 2px !important;
+}
+
+input[type=button] {
+    cursor: pointer;
+    display: inline-block;
+    border: none;
+    width: 100px;
+    height: 33px;
+    line-height: 33px;
+    background-color: #658DB6;
+    color: #fefefe;
+    padding: 0;
+}
+
+input[type=button]:hover {
+    background-color: #f9f9f9;
+    color: #555;
+}
+
+select {
+    height: 33px;
+    line-height: 33px;
+    background-color: #f9f9f9;
+    border: none;
+}
+
+.saver {
+    position: relative;
+    display: inline-block;
+    height: 33px;
+    width: 100px;
+    overflow: hidden;
+    height: 33px;
+    vertical-align: top;
+}
+
+.general_saver_placeholder {
+    position: absolute;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    line-height: 33px;
+    z-index: 1;
+    cursor: not-allowed;
+}
+
+.general_saver {
+    position: absolute;
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    line-height: 33px;
+    text-align: center;
+    background-color: #222;
+    color: #fefefe;
+    z-index: 0;
+    opacity: 0.7;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+
+.general_saver:hover {
+    background-color: #f9f9f9;
+    color: #555;
+}
+
+.active {
+    z-index: 999 !important;
+    opacity: 1;
+}
+
+.loading {
+    font-size: 0 !important;
+    animation: loader_2 1s linear infinite;
+    -webkit-animation: loader_2 1s linear infinite;
+}
+
+@keyframes loader_2 {
+    0% { background-color: #ffff00;}
+    50% { background-color: #ff0000; }
+    100% {background-color: #00ff00; }
+}
+
+@-webkit-keyframes loader_2 {
+    0% { background-color: #ffff00;}
+    50% { background-color: #ff0000; }
+    100% {background-color: #00ff00; }
+}
+
+
+@media all and (max-width: 500px){
+
+    input {
+        display: block;
+        width: 100% !important;
+    }
+
+}

@@ -1,0 +1,52 @@
+
+/* user logged */
+
+#userLoggedBox {
+	position: fixed;
+	top: 10px;
+	left: 30%;
+	width: 40%;
+	min-width: 200px;
+	text-align: center;
+	height: 50px;
+	line-height: 50px;
+	color: #f6f6f6;
+	font-size: 0;
+	z-index: 2;
+}
+
+#userLoggedBox a {
+	display: inline-block;
+	width: auto;
+	color: #f6f6f6;
+}
+
+#icoplaceholder {
+	width: 40px;
+	height: 40px;
+	padding: 5px;
+	background-color: #999;
+	background-origin: center;
+	background-repeat: no-repeat;
+	background-size: 40px 40px;
+	background-position: center;
+	border-radius: 5px 0 0 5px;
+	-webkit-border-radius: 5px 0 0 5px;
+}
+
+#userLoggedBox span {
+	display: inline-block;
+	vertical-align: top;
+	font-size: 24px;
+	background-color: #555;
+}
+
+#userLoggedBox span:nth-child(2) {
+	padding: 0 10px;
+	border-radius: 0 5px 5px 0;
+	-webkit-border-radius: 0 5px 5px 0;
+}
+
+#userLoggedBox a:hover span {
+	background-color: #333 !important;
+}

@@ -1,0 +1,30 @@
+
+/* Notification/Alert stuff */
+
+#alert-wrapper {
+	position: fixed;
+	top:75px;left:calc(50% - 120px);
+	width: 240px;
+	font-size: 15px;
+	line-height: 15px;
+	transition: opacity 1s ease;
+	-webkit-transition: opacity 1s ease;
+}
+
+#alert-container{
+	text-align: center;
+}
+
+.alert-content {
+	position: relative;
+	background-color: #ffff00;
+	padding: 10px;
+	display: block;
+	height: auto;
+	overflow: hidden;
+	margin: none;
+	margin-bottom: 5px;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	z-index: 9999999;
+}

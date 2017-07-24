@@ -1,0 +1,7 @@
+<script src="app/assets/vendor/bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+
+{% for component in webcomponents %}
+
+  <link rel="import" href="app/assets/vendor/bower_components/{{ component }}/{{ component }}.html">
+
+{% endfor %}

@@ -1,0 +1,40 @@
+{# static metatag - each page #}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<base href="{{ website_url|default('https://thatsmy.name/agrishop/') }}">
+
+<meta charset="utf-8">
+
+<meta name="description" content="">
+<meta name="keywords" content="">
+
+<link rel="icon" type="image/png" href="app/assets/pics/logos/agrishop-web-ico.png">
+
+{# dynamic metatags - customize for each page #}
+<title>{{ page_title|default('Agrishop') }}</title>
+
+{# hard coded stylesheet #}
+<link href="app/assets/css/style.css" rel="stylesheet" type="text/css" media="all" />
+
+{# Meta and Links tags #}
+
+{% for item in metatags %}
+
+	{% if item.kind == "link" %}
+		{# <link href="{{ item.href }}" rel="{{ item.rel }}" type="{{ item.type }}" media="all"> #}
+	{% else %}
+		<meta name="{{ item.name }}" content="{{ item.content }}">
+	{% endif %}
+
+{% endfor %}
+
+{# Additional scripts #}
+
+{% for item in head_extra_script %}
+	<script src="{{ item.link }}" {% if item.async %}async{% endif %}></script>
+{% endfor %}
+
+{# Webcomponents support - import #}
+{% if webcomponents %}
+	{% include './components/webcomponents_import.twig' ignore missing %}
+{% endif %}

@@ -1,0 +1,113 @@
+
+form ul {
+
+	padding: 0px;
+	margin: 0px;
+	list-style: none;
+
+}
+
+form li {
+
+	list-style: none;
+	margin: 10px 0px;
+
+}
+
+form {
+	position: relative;
+	margin: auto;
+	width: 90%;
+	max-width: 500px;
+	height: auto;
+	overflow: hidden;
+	top: 40px;
+	background-color: #444;
+	padding: 15px;
+	color: #fefefe;
+	border: none;
+	margin-bottom: 50px;
+	animation: slide_in 0.5s ease-in-out;
+}
+
+ input, select {
+	display: inline-block;
+	width: 150px;
+	height: 30px;
+	line-height: 30px;
+	margin: 10px 0;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: none;
+}
+
+textarea {
+	display: block;
+	width: 300px;
+	height: 80px;
+	padding: 15px;
+	font-size: 15px;
+	margin: 10px auto;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: none;
+}
+
+input, select, textarea {
+	background-color: #fefefe;
+	padding-left: 5px
+}
+
+select, option {
+	cursor: pointer;
+}
+
+label--- {
+    display: inline-block;
+    margin-right: 20px;
+    width: 190px;
+    text-align: left;
+}
+
+input[type=submit] {
+	height: 35px;
+	width: 155px;
+	line-height: 35px;
+	background: #fefefe !important;
+	font-weight: 700;
+	color: #333;
+	margin: 10px;
+	cursor: pointer;
+	display: inline-block;
+}
+
+form span a {
+	color: #999;
+	text-decoration: none;
+}
+
+#forgot-password {
+	display: inline-block;
+	height: 35px;
+	width: 155px;
+	line-height: 35px;
+	background: #d9d9d9 !important;
+	font-weight: 400;
+	color: #333;
+	margin: 10px;
+	cursor: pointer;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: none;
+	vertical-align: top;
+	font-size: 16px;
+}
+
+#switcher_login {
+	position: relative;
+	margin-top: 25px;
+}
+
+#switcher_login a {
+	color: #999;
+}

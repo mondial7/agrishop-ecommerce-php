@@ -1,0 +1,124 @@
+.landing {
+
+	text-align: center;
+
+	a, svg, path {
+
+		transition: all $t-time;
+
+	}
+
+	a {
+
+		display: inline-block;
+		font-size: 24px;
+		width: 200px;
+		margin-right: 15px;
+		margin-left: 15px;
+		margin-top: 30px;
+		height: 200px;
+		border-radius: 7px;
+		background-color: rgba(30,30,30,0.8);
+		color: $light;
+		text-decoration: none;
+		vertical-align: top;
+		cursor: pointer;
+
+		&:hover {
+
+			color: $lightdark;
+
+		}
+
+	}
+
+	svg {
+
+		display: block;
+		overflow: visible !important;
+		margin: auto;
+		margin-top: 40px;
+		margin-bottom: 10px;
+		width: 100px;
+		height: 100px;
+		fill: $light;
+
+	}
+
+}
+
+#search_link:hover svg {
+
+	transform: rotate(-20deg) scale(1.2,1.2);
+
+}
+
+#login_link:hover svg {
+
+	path:nth-child(1){
+
+		transform: translateX(25px);
+
+	}
+
+  path:nth-child(2){
+
+		fill: #bbb;
+		transform: translateX(-15px);
+
+	}
+
+}
+
+#register_link:hover svg {
+
+	path:nth-child(1){
+
+		transform: scale(0.6,0.6);
+		fill: #aaa;
+
+	}
+
+	path:nth-child(2){
+
+		transform: scale(1.7,1.7) translate(-15px,-10px);
+
+	}
+
+}
+
+#add_link:hover svg path:nth-child(1){
+	fill: #bbb;
+}
+
+#add_link:hover svg path:nth-child(2){
+	fill: #aaa;
+}
+
+#add_link:hover svg {
+	transform: scale(0.7,0.7) rotate(360deg);
+}
+
+#logout_link:hover svg path:nth-child(1){
+	fill: #555;
+	transform: translateX(65px);
+}
+
+#logout_link:hover svg path:nth-child(2){
+	fill: #bbb;
+	transform: translateX(-15px);
+}
+
+#options_link:hover svg {
+	transform: scale(1.3,1.3);
+}
+
+#options_link:hover path:nth-child(1) {
+	transform-origin: 105px 210px;
+	animation: rot 2s infinite linear;
+}
+
+#options_link:hover path:nth-child(4) {
+	transform-origin: 275px 120px;
+	animation: rot 2s infinite linear;
+}

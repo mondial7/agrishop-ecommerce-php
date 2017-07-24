@@ -1,0 +1,42 @@
+{% for product in products %}
+
+	<section class="product__card" id="product_{{ product.id }}">
+
+		<div class="product__picture">
+
+			<img src="app/assets/pics/icons/{{ product.category }}.svg" />
+
+		</div>
+
+		<div class="product__info">
+
+			<p class="product__name">{{ product.name|raw }}</p>
+			<p class="product__quantity">{{ product.quantity }} l/kg</p>
+			<p class="product__price">{{ product.price }} €</p>
+			<p class="product__date">{{ product.produced }}</p>
+
+		</div>
+
+		<div class="product__geoinfo">
+
+			<p class="product__farm" data-farm-id="{{ product.farm_id }}">{{ product.farm|raw }}</p>
+			<p class="product__category" data-category-id="{{ product.category_id }}">{{ product.category }}</p>
+			<p class="product__area" data-area-id="{{ product.area_id }}">{{ product.area }}</p>
+
+		</div>
+
+		<div class="product__extrainfo">
+
+			<p class="product__description">{{ product.description|raw }}</p>
+
+		</div>
+
+		<div class="product__action">
+
+			<p class="product__cart_button" onclick="agri.cart.add({{ product.id }})">Add To Cart</p>
+
+		</div>
+
+	</section>
+
+{% endfor %}

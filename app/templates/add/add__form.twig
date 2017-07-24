@@ -1,0 +1,73 @@
+{% if success %}
+
+	<section id="notification-form" style="width:300px;background-color:#f9f9f9;margin:50px auto;padding:15px;">
+
+		<h3>The product has been successfully added to Agrishop!</h3>
+		<br>
+		<h4>Your product is now visible in the search page</h4>
+		<p><a href="" class="button">Back to the home page</a></p>
+
+	</section>
+
+{% else %}
+
+	<form id="add-form" action="add/" method="post">
+
+		{% if not success and error_message %}
+
+			<p style="text-align:center">{{ error_message }}</p>
+
+		{% endif %}
+
+		<ul>
+
+			<li class="item-list">
+				<label for="categories_id">Product category</label>
+				<select id="categories_id" name="category_id" required="">
+					<option selected="true" disabled="disabled">Select Category...</option>
+					{% for category in categories %}
+						<option value="{{ category.id }}">{{ category.category }}</option>
+					{% endfor %}
+				</select>
+			</li>
+
+			<li class="item-list">
+				<label for="areas_id">Area</label>
+				<select id="areas_id" name="area_id" required="">
+					<option selected="true" disabled="disabled">Select Area...</option>
+					{% for area in areas %}
+						<option value="{{ area.id }}">{{ area.area }}</option>
+					{% endfor %}
+				</select>
+			</li>
+
+			<li class="item-list">
+				<label for="name">Product Name</label>
+				<input type="text" id="name" name="name" placeholder="Product name" required>
+			</li>
+
+			<li class="item-list">
+				<label for="quantity">Quantity (kg/L)</label>
+				<input type="number" id="quantity" name="quantity" min="1" max="1000" step="1" value="1" id="quantity-field" required/>
+			</li>
+
+			<li>
+				<label for="date">Production Date</label>
+				<input type="date" id="date" name="date" required/>
+			</li>
+
+			<li class="item-list">
+				<label for="price">Price (Euros)</label>
+				<input type="number" id="price" name="price" min="1" step="1" value="1" id="quantity-field" required/>
+			</li>
+
+			<input type="hidden" value="{{ rand }}" name="rand" />
+
+			<li id="item-list">
+				<input type="submit" name="submit" value="Add" id="add-button" />
+			</li>
+
+		</ul>
+	</form>
+
+{% endif %}

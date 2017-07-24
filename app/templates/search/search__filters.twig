@@ -1,0 +1,108 @@
+<div class="search__filters">
+
+  <div class="filter__searchbar">
+
+    <!-- replace oninput with onchange to reduce the call of functions -->
+    <input type="text" class="filter__searchbar__input" oninput="agri.search.commit()" placeholder="Search farms or products" autofocus=""/>
+
+  </div>
+
+  {#
+  <div class="filter__order">
+
+    <select class="filter__order__select" onchange="agri.search.sort()" >
+
+      <option value="name">Name</option>
+      <option value="area">Area</option>
+      <option value="date">Date</option>
+      <option value="farm">Farm</option>
+      <option value="price">Price</option>
+      <option value="quantity">Quantity</option>
+
+    </select>
+
+    <div class="filter__order__arrow" data-value="down" onclick="agri.search.reverseSort()"></div>
+
+  </div>
+  #}
+
+  <div class="filter__toggle_button" onclick="toggleFilters()">
+
+    <span>Filters</span>
+
+  </div>
+
+  <div class="filter__panel hidden">
+
+    <div class="filter" id="category">
+
+      <div class="filter__title">
+
+        <span>Categories</span>
+
+        {#
+        <div class="fast__selectors">
+          <span class="fast__selectors__button" onclick="agri.search.quickselect('categories','true')">All</span><!--
+          --><span class="fast__selectors__button" onclick="agri.search.quickselect('categories','false')">None</span>
+        </div>
+        #}
+
+      </div>
+
+    {% for category in categories %}
+
+    	<li class="filter__item filter__item--category">
+        <input type="checkbox" name="categories" id="filter_category_{{ category.id }}" value="{{ category.id }}" checked="true" onclick="agri.search.commit_category(this)" data-checked="true">
+        <label for="filter_category_{{ category.id }}">
+          <img src="app/assets/pics/icons/{{ category.category }}.svg" class="checked" id="img_filter_category_{{ category.id }}" />
+        </label>
+    	</li>
+
+    {% endfor %}
+
+    </div>
+
+
+    <div class="filter" id="areas">
+
+      <div class="filter__title">
+
+        <span>Areas</span>
+
+        {#
+        <div class="fast__selectors">
+          <span class="fast__selectors__button" onclick="agri.search.quickselect('areas','true')">All</span><!--
+          --><span class="fast__selectors__button" onclick="agri.search.quickselect('areas','false')">None</span>
+        </div>
+        #}
+
+      </div>
+
+      {% for area in areas %}
+
+      	<label class="filter__item filter__item--area" for="filter_area_{{ area.id }}" onclick="agri.search.commit()">
+        	<input type="checkbox" name="areas" value="{{ area.id }}" id="filter_area_{{ area.id }}" checked="true">
+        	<span>{{ area.area }}</label>
+      	</label>
+
+      {% endfor %}
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+
+let toggleFilters = function(){
+
+  let panel = document.getElementsByClassName('filter__panel')[0]
+
+  panel.classList.toggle('visible')
+  panel.classList.toggle('hidden')
+
+
+}
+
+</script>

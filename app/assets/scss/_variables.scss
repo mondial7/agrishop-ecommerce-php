@@ -1,0 +1,24 @@
+/* Fonts */
+@import 'https://fonts.googleapis.com/css?family=Raleway';
+
+$font: "Raleway", "Arial", sans-serif;
+
+/* Colors - Palette */
+$light: #efefef;
+$lightdark: #727272;
+$dark: #404040;
+$superlight: #fff;
+$orange: orange;
+
+/* Backgrounds */
+$bg: $light;
+
+/* Text */
+$color: $dark;
+
+/* Transition */
+$t-time: 300ms;
+
+/* Layout */
+$header-height: 50px;
+$footer-height: 30px;

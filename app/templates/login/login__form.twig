@@ -1,0 +1,45 @@
+{% import './components/captcha.twig' as captcha %}
+
+
+<form id="login-form" action="login/" method="post">
+
+	{% if not loginOk %}
+
+		<li class="form_box_item form_box_item--full">
+			<p class="c_red">Password or Username/Email incorrect.</p>
+		</li>
+
+	{% endif %}
+
+	<li class="item-list">
+		<label for="email">Username or Email</label>
+		<input type="text" placeholder="Username or Email" value="{{ login_data.userkey }}" name="userkey" id="email-field" autofocus="autofocus" required/>
+	</li>
+
+	<li class="item-list">
+		<label for="password">Password</label>
+		<input type="password" placeholder="Password" name="password" id="password-field" autocomplete="off" required/>
+	</li>
+
+	<li style="list-style: none">
+		<label style="cursor: pointer;">
+			<input style="display: inline-block;width: auto !important;vertical-align: middle;" type="checkbox" name="permalogin" value="y" checked="checked" />stay logged in
+		</label>
+	</li>
+
+	{% if require_captcha %}
+	<li>
+		{{ captcha.recaptcha('6LcTcSEUAAAAAP68E3txuYSe9SNd6GSXEwAMwuEU') }}
+	</li>
+	{% endif %}
+
+	<li class="item-list">
+		<input type="submit" value="Login" name="login" id="login-button" />
+		{# <span id="forgot-password"><a href="help/">Forgot password?</a></span> #}
+	</li>
+
+	<li class="item-list" id="switcher_login">
+		<span>New user? <a href="register/">Register</a></span>
+	</li>
+
+</form>

@@ -1,0 +1,118 @@
+
+header {
+
+  $header-bg: $dark;
+  $header-color: $light;
+
+  position: fixed;
+	top: 0; left: 0;
+	width: 100%;
+	height: $header-height;
+	line-height: $header-height;
+	background-color: $header-bg;
+	color: $header-color;
+  overflow: hidden;
+  z-index: 1;
+
+  h1 {
+
+    margin: 0;
+    margin-left: 20px;
+    display: inline-block;
+    float: left;
+
+    &:hover svg {
+
+      fill: #999;
+    	animation: rot 1.5s infinite linear;
+
+    }
+
+    svg {
+
+    	display: inline-block;
+    	vertical-align: middle;
+    	width: 30px;
+    	height: 30px;
+
+    }
+
+    path {
+
+      fill: #fff;
+
+    }
+
+  }
+
+  nav {
+
+  	display: inline-block;
+  	float: right;
+  	margin: none;
+  	margin-right: 20px;
+
+  }
+
+  li {
+
+  	display: inline-block;
+  	padding: 0 10px;
+  	list-style: none;
+    box-shadow: inset 0px 0px 0px 0px $header-bg;
+    transition: box-shadow 100ms;
+
+    &:hover {
+
+    	box-shadow: inset 0px -7px 0px 0px orange;
+
+    }
+
+  }
+
+  a {
+
+    display: inline-block;
+    height: 100%;
+    color: $header-color;
+    text-decoration: none;
+
+  }
+
+}
+
+main {
+
+	position: relative;
+	min-height: calc(100% - #{$footer-height});
+	height: auto;
+	overflow: hidden;
+  padding-top: $header-height;
+  padding-bottom: 20px;
+
+}
+
+footer {
+
+  position: relative;
+	height: auto;
+	width: 100%;
+  text-align: center;
+
+  p {
+
+  	margin: 0;
+  	line-height: $footer-height;
+  	color: #777;
+  	background-color: #222;
+
+  }
+
+}
+
+@media all and (max-width: 505px) {
+
+  header { height: auto; }
+  main { padding-top: 150px; }
+
+}

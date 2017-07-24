@@ -1,0 +1,87 @@
+{% import './components/captcha.twig' as captcha %}
+
+
+<form id="register_form" action="register/" method="post">
+
+	<li>
+		<p>{{ error_message }}</p>
+	</li>
+
+	<!-- Command for choosing if farm or customer -->
+	<li>
+		<select name="role" onchange="formToggle(this)" required>
+			<option value="farm" {% if placeholder.role != 'customer' %}selected="true"{% endif %}>Farm</option>
+			<option value="customer" {% if placeholder.role == 'customer' %}selected="true"{% endif %}>Customer</option>
+		</select>
+	</li>
+
+	<li id="username_wrap">
+		<label>Username</label>
+		<input type="text" name="username" placeholder="Username" value="{{ placeholder.username }}" required/>
+	</li>
+	<li id="password1_wrap">
+		<label>Password</label>
+		<input type="password" name="password" placeholder="Password" value="{{ placeholder.password }}" autocomplete="off" required/>
+	</li>
+	<li id="password2_wrap">
+		<label>Repeat Password</label>
+		<input type="password" name="password_check" placeholder="Repeat password" autocomplete="off" required/>
+	</li>
+	<li id="mail_wrap">
+		<label>E-mail</label>
+		<input type="email" name="email" placeholder="e-mail" value="{{ placeholder.email }}" required/>
+	</li>
+
+
+	{#
+	<!-- Farmer part that is super nice -->
+	<li id="name_wrap" class="farm_element">
+		<label>Name</label>
+		<input type="text" name="name" placeholder="Name" required/>
+	</li>
+	<li id="surname_wrap"  class="farm_element">
+		<label>Surname</label>
+		<input type="text" name="surname" placeholder="Surname" required />
+	</li>
+	<li id="farm-name_wrap" class="farm_element">
+		<label>Name of the farm</label>
+		<input type="text" name="farm-name" placeholder="Farm's name" required/>
+	</li>
+	<li id="farm-name_wrap" class="farm_element">
+		<label>Phone</label>
+		<input type="text" name="phone" placeholder="Farm's phone number"/>
+	</li>
+	<li id="farm-place_wrap" class="farm_element">
+		<label>Farm place</label>
+		<select required name="id_area">
+			<option selected="true" value disabled="disabled">Select One Area...</option>
+			{% for area in areas %}
+				<option value="area_{{ area.id }}">{{ area.id }}</option>
+			{% endfor %}
+		</select>
+	</li>
+	<li id="productiontype_wrap" class="farm_element">
+		<label>Type of production</label>
+		<select required name="id_category">
+			<option selected="true" value disabled="disabled">Select One Category...</option>
+			{% for category in categories %}
+				<option value="category_{{ category.id }}">{{ category.id }}</option>
+			{% endfor %}
+		</select>
+	</li>
+	<li id="farm-name_wrap" class="farm_element">
+		<label>Description of the farm</label>
+		<textarea name="description" maxlength="250" placeholder="Insert a description... "></textarea>
+	</li> #}
+
+	<li>
+		{{ captcha.recaptcha('6LcTcSEUAAAAAP68E3txuYSe9SNd6GSXEwAMwuEU') }}
+	</li>
+
+	<li>
+		<input type="submit" name="submit" value="Register" />
+	</li>
+	<li id="switcher_login">
+		<span>Do you have an account? <a href="login/">Login</a></span>
+	</li>
+</form>

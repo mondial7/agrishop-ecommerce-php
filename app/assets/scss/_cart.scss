@@ -1,0 +1,81 @@
+.cart {
+
+  display: block;
+  height: 0px;
+
+  &__modal {
+
+    position: fixed;
+    left: 0; top: $header-height;
+    width: 100%;
+    height: calc(100% - #{$footer-height});
+    transition: $t-time transform;
+    transform: translateY(-150%);
+    padding: 20px;
+    background-color: $light;
+    z-index: 2;
+    overflow-y: scroll;
+
+    &--visible {
+
+      transform: translateY(0);
+
+    }
+
+  }
+
+  &__closer {
+
+    $closer-height: 40px;
+
+    position: relative;
+    height: 40px;
+
+    > span {
+
+      position: absolute;
+      right: 0; top: 0;
+      display: inline-block;
+      width: $closer-height;
+      height: $closer-height;
+      line-height: $closer-height;
+      text-align: center;
+      background-color: #b00;
+      cursor: pointer;
+      color: white;
+      border-radius: 50%;
+
+    }
+
+  }
+
+  &__wrapper {
+
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    height: auto;
+    overflow: hidden;
+
+  }
+
+  &__footer {
+
+    text-align: center;
+
+    a {
+
+      @extend .button--link;
+      margin: 10px 0px;
+
+    }
+
+  }
+
+  &__loader {
+
+
+
+  }
+
+}

@@ -1,0 +1,27 @@
+<form class="form_custom form_login" action="{{ form_action }}" method="post">
+
+	{% if not resetOk %}
+
+		<li class="form_box_item form_box_item--full">
+			<p class="c_red">Something went wrong...</p>
+		</li>
+
+	{% endif %}
+
+	<li class="form_box_item">
+		<label for="password">New Password</label>
+		<input class="form_pretty_general_input" type="password" name="new_password" required/>
+	</li>
+
+	<li class="form_box_item">
+		<label for="password">Repeat Password</label>
+		<input class="form_pretty_general_input" type="password" name="new_password_repeat" required/>
+	</li>
+
+	<li class="form_box_item">
+
+		<input class="form_pretty_button_input" type="submit" name="login" value="Login" />
+
+	</li>
+
+</form>

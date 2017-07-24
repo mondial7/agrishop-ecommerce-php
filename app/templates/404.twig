@@ -1,0 +1,15 @@
+{% extends 'page__base.twig' %}
+
+{% import './components/error_page.twig' as helper %}
+
+{% block main %}
+
+<main>
+
+	<emoji-rain active></emoji-rain>
+
+	{{ helper.error_page('You really got lost :/ ...') }}
+
+</main>
+
+{% endblock %}

@@ -1,0 +1,4 @@
+{% import './components/box.twig' as box %}
+{% import './options/options__content.twig' as options %}
+
+{{ box.fullsize(options.box_content(userLogged, sess, farm_is_active, farm), 'options') }}

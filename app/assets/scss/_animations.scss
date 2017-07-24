@@ -1,0 +1,8 @@
+
+@keyframes rot {0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
+@-webkit-keyframes rot {0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
+
+@keyframes slide_in {from{transform: translateX(100%)}to{transform: translateX(0)}}
+@-webkit-keyframes slide_in {from{-webkit-transform: translateX(100%)}to{-webkit-transform: translateX(0)}}
+
+@keyframes fade_card { from { opacity: 0; color: #f9f9f9; } to { opacity: 1; color: #111; } }

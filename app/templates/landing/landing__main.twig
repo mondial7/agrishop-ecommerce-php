@@ -1,0 +1,4 @@
+{% import './components/box.twig' as box %}
+{% import './landing/landing__content.twig' as land %}
+
+{{ box.fullsize(land.box_content(userLogged, sess), 'landing') }}

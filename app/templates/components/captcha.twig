@@ -1,0 +1,16 @@
+{% macro recaptcha(key) %}
+	
+	<div class="g-recaptcha" data-sitekey="{{ key }}"></div>
+
+	<script type="text/javascript">
+	// append script call to document head
+	(function(){
+		var a = document.createElement('script');
+		a.src = "https://www.google.com/recaptcha/api.js";
+		a.setAttribute("async","");
+		a.setAttribute("defer","");
+		document.head.appendChild(a);
+	})();
+	</script>
+
+{% endmacro %}

@@ -1,0 +1,45 @@
+.collapsed {
+
+	height: 0px !important;
+	overflow: hidden !important;
+	transition: all $t-time;
+
+}
+
+.button {
+
+	position: relative;
+	display: inline-block;
+	padding: 7px 5px;
+	background: $dark;
+	color: $light;
+	text-decoration: none;
+	cursor: pointer;
+	transition: all $t-time;
+
+	&:hover {
+
+		background: $lightdark;
+		transform: scale(1.05);
+
+	}
+
+}
+
+.button--link {
+
+	@extend .button;
+
+	padding: 10px 5px;
+	box-shadow: inset 0px 0px 0px 0px $dark;
+	transition: box-shadow 100ms;
+
+	&:hover {
+
+		background: $dark;
+		transform: scale(1);
+		box-shadow: inset 0px -7px 0px 0px orange;
+
+	}
+
+}

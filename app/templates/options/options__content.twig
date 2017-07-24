@@ -1,0 +1,291 @@
+{% macro saver(name) %}
+
+<div class="saver" id="saver_{{ name }}">
+  <div class="general_saver_placeholder" id="saver_placeholder_{{ name }}"></div>
+  <div class="general_saver" id="saver_button_{{ name }}" onclick="agri.option.save('{{ name }}');">Save</div>
+</div>
+
+{% endmacro %}
+
+{% macro box_content(userLogged, sess, farm_is_active, farm) %}
+
+	{% import _self as helper %}
+
+<style>
+input[type=text], input[type=mail], input[type=password] { background-color: #e8e8e8; }
+.options__profile label, .options__profile input, .options__profile .saver,
+.farm_details__wrapper label, .farm_details__wrapper input, .farm_details__wrapper .saver { margin: 10px 20px; vertical-align: middle; }
+.options__wrapper { margin-top: 70px; background-color: #333; min-height: 100%; position: relative; }
+.options__content { padding: 20px; }
+.options__content > section { margin: 30px auto; padding: 20px; max-width: 900px; background-color: #fefefe; }
+</style>
+
+<div class="options__wrapper">
+
+	<div class="options__content">
+
+		<section class="options__profile">
+
+			<div id="profile_username">
+				<label for="input_username">USERNAME</label>
+				<input type="text" id="input_username" name="username" placeholder="{{ sess.username }}"  onclick="agri.option.edit(this)" oninput="agri.option.prepare('username')" />
+				{{ helper.saver('username') }}
+			</div>
+
+      <hr>
+
+			<div id="profile_mail">
+				<label for="input_mail">MAIL</label>
+				<input type="mail" id="input_mail" name="mail" placeholder="{{ sess.email }}" onclick="agri.option.edit(this)" oninput="agri.option.prepare('mail')" />
+				{{ helper.saver('mail') }}
+      </div>
+
+      <hr>
+
+			<div id="profile_password">
+				<label for="input_old_password">OLD PASSWORD</label>
+				<input type="password" id="input_old_password" name="old_password" placeholder="old password" oninput="agri.option.prepare_password()" autocomplete="off" />
+        <br />
+        <label for="input_new_password">NEW PASSWORD</label>
+        <input type="password" id="input_new_password" name="new_password" placeholder="new password" oninput="agri.option.prepare_password()" autocomplete="off" />
+				{{ helper.saver('new_password') }}
+        <p>Remember: Password must be at least five characters long.</p>
+			</div>
+
+		</section>
+
+{% if sess.role == 'farm' %}
+
+		<section id="farm_details" class="options_farm">
+
+
+      {% if farm_is_active %}
+
+        <h3>Farm Details</h3>
+
+        <div class="farm_details__wrapper">
+
+          <div class="option__field">
+            <label for="input_farm_name">NAME</label>
+            <input type="text" id="input_farm_name" value="" placeholder="{{ farm.name }}" onclick="agri.option.edit(this)" oninput="agri.option.prepare('farm_name')" />
+            {{ helper.saver('farm_name') }}
+          </div>
+
+          <hr>
+
+          <div class="option__field">
+            <label for="input_farm_owner_name">OWNER NAME</label>
+            <input type="text" id="input_farm_owner_name" placeholder="{{ farm.owner_name }}" onclick="agri.option.edit(this)" oninput="agri.option.prepare('farm_owner_name')" />
+            {{ helper.saver('farm_owner_name') }}
+          </div>
+
+          <hr>
+
+          <div class="option__field">
+            <label for="input_farm_owner_surname">OWNER SURNAME</label>
+            <input type="text" id="input_farm_owner_surname" placeholder="{{ farm.owner_surname }}" onclick="agri.option.edit(this)" oninput="agri.option.prepare('farm_owner_surname')" />
+            {{ helper.saver('farm_owner_surname') }}
+          </div>
+
+        </div>
+
+      {% else %}
+
+        <h3>Activate your farm</h3>
+
+        <div class="farm_activate__wrapper">
+
+          <input type="text" id="activate_farm_name" placeholder="Farm Name" />
+
+          <input type="text" id="activate_farm_owner_name" placeholder="Owner Name" />
+
+          <input type="text" id="activate_farm_owner_surname" placeholder="Owner Surname" />
+
+          <p><span onclick="agri.option.activateFarm()" class="button">Activate</span></p>
+
+        </div>
+
+    {% endif %}
+
+  </section>
+
+    {#
+				<!-- profile picture for farm -->
+				<form action="api/upload/farmpicture/" method="post" class="form_custom" enctype="multipart/form-data" onsubmit="return upload_form_submit();" target="notification_box" id="picture_settings">
+
+					<li class="form_box_item form_box_item--full">
+				    	<h4>Farm Profile Picture</h4>
+			    </li>
+
+			    <li class="form_box_item">
+			        <label for="file_input" style="cursor:pointer"><img src="show/farm-profile/img/{{ me.farm.avatar }}" id="target_picture" style="max-height:200px;max-width:200px" alt="Upload Your Farm Profile Picture" /></label>
+			        <input style="cursor:pointer"  type="file" accept="image/*" name="picture" id="file_input">
+					</li>
+
+					<br>
+
+			    <li class="form_box_item">
+			    	<input type="submit" value="Upload" name="picture_submit">
+			    </li>
+
+				</form>
+
+				{# Need for async uploads, and used as upload notification box #}
+				<iframe id="notification_box" name="notification_box" style="display:none" src=""></iframe>
+				<script>
+					var upload_form_submit = function() {
+					    // Check if file input is empty
+					    if(document.getElementById("file_input").files.length == 0){
+					        alert("File input is empty!");
+					        return false;
+					    }
+
+					    // Return true to submit the form
+					    return true;
+					}
+
+					var notify_callback = function(text){
+					    alert(text);
+					}
+
+					var render_picture_callback = function(filename, directory, bg){
+
+					    var picture = {
+					            dom : document.getElementById("target_picture"),
+					            path : directory+filename+"?"+(Math.floor((Math.random()*1000000)+1))
+					        }
+
+					    // Switch between img or div elements
+					    if (bg === true){
+					        picture.dom.setAttribute("style", "background-image:url('"+picture.path+"')");
+					    } else {
+					        picture.dom.setAttribute("src", picture.path);
+					    }
+
+					}
+				</script>
+
+			</div>
+
+		</section>
+
+    {# #}
+ {#
+		<section class="options__production">
+
+			<div id="profile_areas">
+				<label>AREAS</label>
+				<div>
+					<select id="remove_area">
+						<option disabled="disabled" selected="selected"></option>
+						<option value=""></option>
+					</select>
+					<input type="submit" value="Remove area" onclick="removeArea()" />
+					<select id="add_area">
+						<option disabled="disabled" selected="selected"></option>
+						<option value=""></option>
+					</select>
+					<input type="submit" value="Add area" onclick="addArea()" />
+				</div>
+			</div>
+
+			<div id="profile_categories">
+				<label>CATEGORIES</label>
+				<div>
+					<select id="remove_category">
+						<option disabled="disabled" selected="selected"></option>
+						<option value=""></option>
+					</select>
+					<input type="submit" value="Remove category" onclick="removeCategory()" />
+					<select id="add_category">
+						<option disabled="disabled" selected="selected"></option>
+						<option value=""></option>
+					</select>
+					<input type="submit" value="Add category" onclick="addCategory()" />
+				</div>
+			</div>
+
+		</section>
+#}
+{% endif %}
+
+  {#
+		<section class="options__address">
+
+		  <label>ADDRESS</label>
+
+	    <div id="address">
+				<input type="hidden" name="old_cap" value="" />
+				<input type="number" name="cap" placeholder=""  onclick="editor(this)" oninput="prepare_saver(this)" />
+				<input type="hidden" name="old_street" value="" />
+				<input type="text" name="street" placeholder=""  onclick="editor(this)" oninput="prepare_saver(this)" />
+				<input type="hidden" name="old_consignee" value="" />
+				<input type="text" name="consignee" placeholder=""  onclick="editor(this)" oninput="prepare_saver(this)" />
+				<input type="hidden" name="old_city" value="" />
+				<input type="text" name="city" placeholder=""  onclick="editor(this)" oninput="prepare_saver(this)" />
+
+				<div class="saver">
+	          <div class="general_saver_placeholder"></div>
+	          <div class="general_saver" onclick="force_save(this,'update_address');">Update</div>
+	          <div class="general_saver" onclick="force_save(this,'add_address_farm');">Update</div>
+	      </div>
+		  </div>
+
+			<label>ADDRESSES</label>
+
+	    <div id="addresses_container">
+
+				<div class="address">
+
+					<input type="hidden" name="old_cap" value="" />
+					<input type="number" name="cap" placeholder=""  onclick="editor(this)" oninput="prepare_saver(this)" />
+					<input type="hidden" name="old_street" value="" />
+					<input type="text" name="street" placeholder=""  onclick="editor(this)" oninput="prepare_saver(this)" />
+					<input type="hidden" name="old_consignee" value="" />
+					<input type="text" name="consignee" placeholder=""  onclick="editor(this)" oninput="prepare_saver(this)" />
+					<input type="hidden" name="old_city" value="" />
+					<input type="text" name="city" placeholder=""  onclick="editor(this)" oninput="prepare_saver(this)" />
+
+					<div class="saver">
+	            <div class="general_saver_placeholder"></div>
+	            <div class="general_saver" onclick="force_save(this,'update_address')">Update</div>
+	        </div>
+	        <div class="saver">
+	            <div class="general_saver" onclick="force_save(this,'remove_address')">Remove</div>
+	        </div>
+
+	      </div>
+
+			</div>
+
+	    <div id="newAddress" onclick="renderNewAddress()">Add address</div>
+
+		</section>
+    #}
+    {#
+		<section class="options__delete">
+
+			<!-- DELETE PROFILE BOX -->
+			<div id="deleteProfile">
+				<span onclick="confirmDeleteProfile(this)">DELETE PROFILE</span>
+				<div>
+					<p>
+						<br>
+						You are about to delete you profile. You will permently erease all your data and all the products published on Agrishop.
+						<br><br>
+						Please insert your password to proceed:<br><br>
+						<input type="password" id="deleteProfilePass" placeholder="*****" />
+						<span onclick="commit_delete()">Proceed</span>
+						<span onclick="hideDeleteProfile()">Cancel</span>
+					</p>
+				</div>
+			</div>
+
+		</section>
+    #}
+
+	</div>
+
+</div> <!-- end option wrapper -->
+
+{% endmacro %}

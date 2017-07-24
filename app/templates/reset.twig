@@ -1,0 +1,19 @@
+{% extends 'page__base.twig' %}
+
+{% block main %}
+
+<main>
+	
+	{% if reset_password_success %}
+		
+		<p style="background:#fefefe;padding:20px;max-width:600px">Success! Your password has been correctly updated.<br>Now you can go back to <a href="login/" title="Login">login page</a>.</p>
+
+	{% else %}
+	
+		{% include './reset/reset__form.twig' ignore missing %}
+		
+	{% endif %}
+
+</main>
+
+{% endblock %}
