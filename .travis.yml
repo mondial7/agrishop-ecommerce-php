@@ -1,0 +1,18 @@
+dist: trusty
+sudo: required
+
+addons:
+  sonarcloud:
+    organization: "mondial7-github"
+    token:
+      secure: "tmsd2/03l1oPsQ+l1Pp5yXqUvJk4chZ7Z3Le3CgDHXscnOsAKoUjvCSBtHdqTDP2IAZV34UNk/4X7Wk+J1mr67yxAbdeLt5R/+bThBgbzVrFmnNsI2WtSjuTbmwDMhP3DZRcBtExvdkznPWPV//2yfOvwZCvfkwRCtSYsHmKk/7gTYIY76QGZhr2UdGallQtqfPVXMQDhjNmEiS7ZfhmmbTA9BWw25MsmqvZW2vsOu2fn83A1/cobBeu2ZwfiJpbsEpiFCWIjt/wv2OHvE1Ws8U49HXbFnCkplMMfmD14ehVTRs39wBm/q2C6DtxnOb5+nyk9qjU2xODa4p7WQuz2y+KBFr2k3m70Yhq/EMPiVOd6p6yTbQI1bL7g9hFroSvRaeJnrAqaA/7NOAhDB/u3XY5JOIgbbHnWxpcK5kJy/WldtX6nS7G1sI+egFzZCBwkCnMKWptjLQvWnpjxSAImAGeFHcNQsGJoNAjKyrFUri+je6xsF42IuH0bUBySlMGGyw+AhnZsAS9nMIhtT4PeQgLIkQkCLMItgJ/NQz2G3Og9SPkHREsyjiI9iSFJtiiZytu209GxTo5nX6QZkfIXMSJlNk7oZ82lSSwD1h9AS5QYFb73bqrqz29TRrnDeMwKpWsguD7JuO1iuyDjLV2Es/UC/nzDpI9jiUmuykVO7M="
+
+jdk:
+  - oraclejdk8
+
+script:
+  - sonar-scanner
+
+cache:
+  directories:
+    - '$HOME/.sonar/cache'
